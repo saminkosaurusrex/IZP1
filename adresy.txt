@@ -2,7 +2,6 @@ Praha
 Brno
 Bruntal
 Bratislava
-Ústí nad Labem
 Pardubice
 Zlín
 Havířov
@@ -19,10 +18,27 @@ Jablonec nad Nisou
 Mladá Boleslav
 Prostějov
 Přerov
-Česká Lípa
 Třebíč
 Tábor
 Znojmo
 Kolín
 Příbram
 Písek
+
+$ cat adresy.txt
+Praha
+Brno
+Bruntal
+Bratislava
+Příklad hledání slova brno
+
+$ ./keyfilter <adresy.txt
+Enable: BP
+$ ./keyfilter b <adresy.txt
+Enable: R
+$ ./keyfilter br <adresy.txt
+Enable: ANU
+$ ./keyfilter brn <adresy.txt
+Found: BRNO
+$ ./keyfilter be <adresy.txt
+Not found

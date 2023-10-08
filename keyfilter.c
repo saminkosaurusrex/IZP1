@@ -15,6 +15,11 @@ int main(int argc, char *argv[]) {
     {
         getFirstLetter();
                 
+    }else{
+       for (int i = 0; i < 5; i++)
+       {
+        printf("%c", argv[1][i]);
+       }
     }
 
 
