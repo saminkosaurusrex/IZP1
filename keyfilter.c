@@ -37,30 +37,15 @@ void getFirstLetter(){
                 i++;
             }else{
                 char pismenko = getchar();
-                //printf("%d %c %d", isIn(i, letterArray, pismenko), pismenko, i);
-                printf("isIn:%d\n", isIn(i, letterArray, pismenko));
-                printf("pismenko: %c\n", pismenko);
-                printf("i=%d\n", i);
                 if (isIn(i, letterArray, pismenko) != 1)
                 {
-                    
-                    //
-                    
                     letterArray[i] = pismenko;
                     printf("%c\n", letterArray[i]);
                     i++;   
                 }
-                //scanf("%s", &letterArray[i]);
-                //printf("%c\n", letterArray[i]);
             }
         }
     }
-
-    for (int i = 0; i < 10; i++)
-    {
-        printf("%c", letterArray[i]);
-    }
-    
 }
 
 int isIn(int arraySize, char array[], char letter){
