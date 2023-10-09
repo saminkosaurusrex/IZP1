@@ -1,19 +1,15 @@
 #include <stdio.h>
-
-// void scanFile(char letter, char array[1][1]);
-
-char *getFirstLetter();
-int isIn(int arraySize, char array[], char letter);
 char *getAllowedKey(char inputArray[1000]);
+int isIn(int arraySize, char array[], char letter);
+void getFirstLetter();
 int isStrinInDatabase(char inputString[1000], char lineString[]);
-
 int main(int argc, char *argv[])
 {
-    int letter, i, j;
+    int i = 0;
+    int j = 0;
     char array[1000];
-    char *firstLetters = getFirstLetter();
-    char *nextLetter;
-    i = 0;
+    char *allowed;
+
     if (argc > 1)
     {
         while (argv[1][i] != '\0')
@@ -23,76 +19,41 @@ int main(int argc, char *argv[])
         }
     }
 
-    i = 0;
-    nextLetter = getAllowedKey(array);
-    printf("%c", nextLetter[0]);
-    i = 0;
-    j = 0;
-    if (argc == 1)
+    switch (argc)
     {
-        while (firstLetters[i] != '\0')
-        {
-            printf("%c\n", firstLetters[i]);
-            i++;
-        }
-    }
-    else
-    {
+    case 1:
+        getFirstLetter();
+        break;
+
+    case 2:
         i = 0;
-        printf("Enable: ");
-        while (nextLetter[i] != '\0')
+        allowed = getAllowedKey(array);
+        while (allowed[i] != '\0')
         {
-            printf("%c ", nextLetter[i]);
+            printf("%c", allowed[0]);
             i++;
         }
+        break;
+    default:
+        break;
     }
-    return 0;
-}
-char *getFirstLetter()
-{
-    int letter;
-    int i = 0;
-    // int isIn = 0;
-    static char letterArray[1000] = {0};
-    while ((letter = getchar()) != EOF)
-    {
-        if (letter == '\n' || i == 0)
-        {
-            if (i == 0)
-            {
-                letterArray[i] = letter;
-                // printf("%c\n", letterArray[i]);
-                i++;
-            }
-            else
-            {
-                char pismenko = getchar();
-                if (isIn(i, letterArray, pismenko) != 1)
-                {
-                    letterArray[i] = pismenko;
-                    // printf("%c\n", letterArray[i]);
-                    i++;
-                }
-            }
-        }
-    }
-    return letterArray;
 }
 
-int isIn(int arraySize, char array[], char letter)
+int isStrinInDatabase(char inputString[1000], char lineString[])
 {
+    int k = 0;
     int isIn = 0;
-    for (int i = 0; i < arraySize; i++)
+    while (inputString[k] != '\0')
     {
-        if (letter == array[i])
+        if (inputString[k] == lineString[k])
         {
             isIn = 1;
-            return isIn;
         }
         else
         {
-            isIn = 0;
+            return 0;
         }
+        k++;
     }
     return isIn;
 }
@@ -136,24 +97,50 @@ char *getAllowedKey(char inputArray[1000])
     return letterArray;
 }
 
-int isStrinInDatabase(char inputString[1000], char lineString[])
+void getFirstLetter()
 {
-    int k = 0;
-    int isIn = 0;
-    while (inputString[k] != '\0')
+    int letter;
+    int i = 0;
+    // int isIn = 0;
+    static char letterArray[1000] = {0};
+    while ((letter = getchar()) != EOF)
     {
-        if (inputString[k] == lineString[k])
+        if (letter == '\n' || i == 0)
+        {
+            if (i == 0)
+            {
+                letterArray[i] = letter;
+                printf("%c\n", letterArray[i]);
+                i++;
+            }
+            else
+            {
+                char pismenko = getchar();
+                if (isIn(i, letterArray, pismenko) != 1)
+                {
+                    letterArray[i] = pismenko;
+                    printf("%c\n", letterArray[i]);
+                    i++;
+                }
+            }
+        }
+    }
+}
+
+int isIn(int arraySize, char array[], char letter)
+{
+    int isIn = 0;
+    for (int i = 0; i < arraySize; i++)
+    {
+        if (letter == array[i])
         {
             isIn = 1;
+            return isIn;
         }
         else
         {
-            return 0;
+            isIn = 0;
         }
-        k++;
     }
     return isIn;
 }
-
-// tu funkciu na prve pismenka vyuzit
-// porovnanavie riadkov ako stringov
