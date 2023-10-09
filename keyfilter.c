@@ -4,7 +4,7 @@
 
 char *getFirstLetter();
 int isIn(int arraySize, char array[], char letter);
-char *getAllowedKey(char array[1000]);
+char *getAllowedKey(char inputArray[1000]);
 int isStrinInDatabase(char inputString[1000], char lineString[]);
 
 int main(int argc, char *argv[])
@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
     int letter, i, j;
     char array[1000];
     char *firstLetters = getFirstLetter();
-
+    char *nextLetter;
+    i = 0;
     if (argc > 1)
     {
         while (argv[1][i] != '\0')
@@ -21,14 +22,10 @@ int main(int argc, char *argv[])
             i++;
         }
     }
+
     i = 0;
-    char *nextLetter = getAllowedKey(array);
-
-    while (nextLetter[i] != '\0')
-    {
-        printf("%c", nextLetter[i]);
-    }
-
+    nextLetter = getAllowedKey(array);
+    printf("%c", nextLetter[0]);
     i = 0;
     j = 0;
     if (argc == 1)
@@ -39,21 +36,18 @@ int main(int argc, char *argv[])
             i++;
         }
     }
-
-    /*
     else
     {
-        while (nextLetter[j] != '\0')
+        i = 0;
+        printf("Enable: ");
+        while (nextLetter[i] != '\0')
         {
-            printf("som tu");
-            printf("kokot");
-            printf("%c\n", nextLetter[j]);
+            printf("%c ", nextLetter[i]);
+            i++;
         }
     }
-*/
     return 0;
 }
-
 char *getFirstLetter()
 {
     int letter;
@@ -103,7 +97,7 @@ int isIn(int arraySize, char array[], char letter)
     return isIn;
 }
 
-char *getAllowedKey(char array[1000])
+char *getAllowedKey(char inputArray[1000])
 {
     int i = 0;
     int j = 0;
@@ -113,25 +107,31 @@ char *getAllowedKey(char array[1000])
 
     while ((letter = getchar()) != EOF)
     {
-        while (letter != '\n')
+        i = 0;
+        while (lineString[i] != '\0')
+        {
+            lineString[i] = 0;
+            i++;
+        }
+        i = 0;
+        while (letter != '\n' && letter != EOF)
         {
             lineString[i] = letter;
             letter = getchar();
             i++;
         }
         i = 0;
-
-        if (isStrinInDatabase(array, lineString) == 1)
+        if (isStrinInDatabase(inputArray, lineString) == 1)
         {
-            while (lineString[i] == array[i])
+            i = 0;
+            while (lineString[i] == inputArray[i])
             {
                 i++;
             }
             letterArray[j] = lineString[i];
             j++;
         }
-
-        // funkcia je ok podla mna ale treba ceknut ci dany string sa nachadza v databaze a ak nie
+        i = 0;
     }
     return letterArray;
 }
