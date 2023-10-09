@@ -1,6 +1,6 @@
 #include <stdio.h>
 char *getAllowedKey(char inputArray[1000]);
-int isIn(int arraySize, char array[], char letter);
+int isIn(char array[], char letter);
 void getFirstLetter();
 int isStrinInDatabase(char inputString[1000], char lineString[]);
 int main(int argc, char *argv[])
@@ -64,7 +64,7 @@ char *getAllowedKey(char inputArray[1000])
     int j = 0;
     char letter;
     char lineString[100];
-    static char letterArray[1000];
+    static char letterArray[1000] = {0};
 
     while ((letter = getchar()) != EOF)
     {
@@ -89,7 +89,11 @@ char *getAllowedKey(char inputArray[1000])
             {
                 i++;
             }
-            letterArray[j] = lineString[i];
+            if (isIn(letterArray, lineString[i]) == 0)
+            {
+                letterArray[j] = lineString[i];
+            }
+
             j++;
         }
         i = 0;
@@ -116,7 +120,7 @@ void getFirstLetter()
             else
             {
                 char pismenko = getchar();
-                if (isIn(i, letterArray, pismenko) != 1)
+                if (isIn(letterArray, pismenko) != 1)
                 {
                     letterArray[i] = pismenko;
                     printf("%c\n", letterArray[i]);
@@ -127,10 +131,12 @@ void getFirstLetter()
     }
 }
 
-int isIn(int arraySize, char array[], char letter)
+int isIn(char array[], char letter)
 {
     int isIn = 0;
-    for (int i = 0; i < arraySize; i++)
+    int i = 0;
+
+    while (array[i] != '\0')
     {
         if (letter == array[i])
         {
@@ -141,6 +147,8 @@ int isIn(int arraySize, char array[], char letter)
         {
             isIn = 0;
         }
+        i++;
     }
+
     return isIn;
 }
