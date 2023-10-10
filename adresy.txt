@@ -2,3 +2,101 @@ Praha
 Brno
 Bruntal
 Bratislava
+Ostrava
+Plzeň
+Liberec
+Olomouc
+Ústí nad Labem
+Hradec Králové
+České Budějovice
+Pardubice
+Zlín
+Havířov
+Kladno
+Most
+Opava
+Frýdek-Místek
+Karviná
+Jihlava
+Teplice
+Děčín
+Karlovy Vary
+Chomutov
+Jablonec nad Nisou
+Mladá Boleslav
+Prostějov
+Třebíč
+Třinec
+Tábor
+Znojmo
+Přerov
+Cheb
+Kroměříž
+Vsetín
+Valašské Meziříčí
+Litvínov
+Česká Lípa
+Orlová
+Trutnov
+Uherské Hradiště
+Hodonín
+Krnov
+Sokolov
+Šumperk
+Vítkovice
+Blansko
+Český Těšín
+Kutná Hora
+Náchod
+Jičín
+Nový Jičín
+Klatovy
+Havirov
+Kolin
+Mělník
+Litoměřice
+Česká Kamenice
+Benesov
+Vrchlabí
+Český Krumlov
+Jindřichův Hradec
+Benešov
+Chrudim
+Svitavy
+Pelhřimov
+Zábřeh
+Žďár nad Sázavou
+Tachov
+Rokycany
+Černošice
+Letovice
+Roudnice nad Labem
+Mělník
+Rakovník
+Vysoké Mýto
+Polička
+Tišnov
+Slaný
+Litomyšl
+Třemošná
+Jirkov
+Bílina
+Neratovice
+Postoloprty
+Louny
+Šluknov
+Varnsdorf
+Krupka
+Osek
+Litvínovice
+Kralupy nad Vltavou
+Zákupy
+Ústí nad Orlicí
+Žatec
+Vlašim
+Horní Slavkov
+Lovosice
+Domažlice
+Žamberk
+Dobřichovice
+Chřibská

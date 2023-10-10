@@ -1,13 +1,16 @@
 #include <stdio.h>
+#include <ctype.h>
 #define maxSizeOfArray 1000
 
 void getFirstLetter();
 int isIn(char array[], char letter);
+int inputChecker(char inputArray[]);
 int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[]);
 char *getAllowedKey(char inputArray[maxSizeOfArray]);
 int main(int argc, char *argv[])
 {
     int i = 0;
+    int j = 0;
     char array[maxSizeOfArray];
     char *allowed;
 
@@ -20,6 +23,16 @@ int main(int argc, char *argv[])
         }
     }
 
+    while (argv[1][j] != '\0')
+    {
+        if (isalpha(argv[1][j]) == 0)
+        {
+            printf("Input can't be numerical");
+            return 0;
+        }
+        j++;
+    }
+
     switch (argc)
     {
     case 1:
@@ -29,23 +42,33 @@ int main(int argc, char *argv[])
 
     case 2:
         i = 0;
-        allowed = getAllowedKey(array);
-        printf("enable: ");
-        while (allowed[i] != '\0')
+
+        if ((allowed = getAllowedKey(array)) != 0)
         {
-            printf("%c", allowed[i]);
-            i++;
+            printf("enable: ");
+            while (allowed[i] != '\0')
+            {
+                printf("%c", allowed[i]);
+                i++;
+            }
         }
+        else
+        {
+            printf("Not found");
+        }
+
         break;
     default:
         break;
     }
+    return 1;
 }
 
 int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[])
 {
     int k = 0;
     int isIn = 0;
+
     while (inputString[k] != '\0')
     {
         if (inputString[k] == lineString[k])
@@ -98,6 +121,10 @@ char *getAllowedKey(char inputArray[maxSizeOfArray])
             }
 
             j++;
+        }
+        else
+        {
+            return 0;
         }
         i = 0;
     }
