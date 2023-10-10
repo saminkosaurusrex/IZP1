@@ -1,13 +1,14 @@
 #include <stdio.h>
-char *getAllowedKey(char inputArray[1000]);
-int isIn(char array[], char letter);
+#define maxSizeOfArray 1000
+
 void getFirstLetter();
-int isStrinInDatabase(char inputString[1000], char lineString[]);
+int isIn(char array[], char letter);
+int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[]);
+char *getAllowedKey(char inputArray[maxSizeOfArray]);
 int main(int argc, char *argv[])
 {
     int i = 0;
-    int j = 0;
-    char array[1000];
+    char array[maxSizeOfArray];
     char *allowed;
 
     if (argc > 1)
@@ -22,15 +23,17 @@ int main(int argc, char *argv[])
     switch (argc)
     {
     case 1:
+        // skus este zadefinovat getFir... tuna, ale nech vracia pole
         getFirstLetter();
         break;
 
     case 2:
         i = 0;
         allowed = getAllowedKey(array);
+        printf("enable: ");
         while (allowed[i] != '\0')
         {
-            printf("%c", allowed[0]);
+            printf("%c", allowed[i]);
             i++;
         }
         break;
@@ -39,7 +42,7 @@ int main(int argc, char *argv[])
     }
 }
 
-int isStrinInDatabase(char inputString[1000], char lineString[])
+int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[])
 {
     int k = 0;
     int isIn = 0;
@@ -58,13 +61,13 @@ int isStrinInDatabase(char inputString[1000], char lineString[])
     return isIn;
 }
 
-char *getAllowedKey(char inputArray[1000])
+char *getAllowedKey(char inputArray[maxSizeOfArray])
 {
     int i = 0;
     int j = 0;
     char letter;
-    char lineString[100];
-    static char letterArray[1000] = {0};
+    char lineString[maxSizeOfArray];
+    static char letterArray[maxSizeOfArray] = {0};
 
     while ((letter = getchar()) != EOF)
     {
@@ -105,8 +108,7 @@ void getFirstLetter()
 {
     int letter;
     int i = 0;
-    // int isIn = 0;
-    static char letterArray[1000] = {0};
+    static char letterArray[maxSizeOfArray] = {0};
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
@@ -149,6 +151,5 @@ int isIn(char array[], char letter)
         }
         i++;
     }
-
     return isIn;
 }
