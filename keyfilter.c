@@ -1,17 +1,14 @@
 #include <stdio.h>
 #include <ctype.h>
-#define maxSizeOfArray 1000
-
-void getFirstLetter();
+char *getAllowedKey(char inputArray[1000]);
 int isIn(char array[], char letter);
-int inputChecker(char inputArray[]);
-int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[]);
-char *getAllowedKey(char inputArray[maxSizeOfArray]);
+void getFirstLetter();
+int isStrinInDatabase(char inputString[1000], char lineString[]);
 int main(int argc, char *argv[])
 {
     int i = 0;
     int j = 0;
-    char array[maxSizeOfArray];
+    char array[1000];
     char *allowed;
 
     if (argc > 1)
@@ -23,52 +20,40 @@ int main(int argc, char *argv[])
         }
     }
 
-    while (argv[1][j] != '\0')
-    {
-        if (isalpha(argv[1][j]) == 0)
-        {
-            printf("Input can't be numerical");
-            return 0;
-        }
-        j++;
-    }
-
     switch (argc)
     {
     case 1:
-        // skus este zadefinovat getFir... tuna, ale nech vracia pole
         getFirstLetter();
         break;
 
     case 2:
-        i = 0;
-
-        if ((allowed = getAllowedKey(array)) != 0)
+        while (argv[1][j] != '\0')
         {
-            printf("enable: ");
-            while (allowed[i] != '\0')
+            if (!isalpha(argv[1][j]))
             {
-                printf("%c", allowed[i]);
-                i++;
+                printf("Input can't be numerical");
+                return 1;
             }
+            j++;
         }
-        else
+        i = 0;
+        allowed = getAllowedKey(array);
+        while (allowed[i] != '\0')
         {
-            printf("Not found");
+            printf("%c", allowed[i]);
+            i++;
         }
-
         break;
     default:
         break;
     }
-    return 1;
+    return 0;
 }
 
-int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[])
+int isStrinInDatabase(char inputString[1000], char lineString[])
 {
     int k = 0;
     int isIn = 0;
-
     while (inputString[k] != '\0')
     {
         if (inputString[k] == lineString[k])
@@ -84,13 +69,13 @@ int isStrinInDatabase(char inputString[maxSizeOfArray], char lineString[])
     return isIn;
 }
 
-char *getAllowedKey(char inputArray[maxSizeOfArray])
+char *getAllowedKey(char inputArray[1000])
 {
     int i = 0;
     int j = 0;
     char letter;
-    char lineString[maxSizeOfArray];
-    static char letterArray[maxSizeOfArray] = {0};
+    char lineString[1000];
+    static char letterArray[1000] = {0};
 
     while ((letter = getchar()) != EOF)
     {
@@ -122,10 +107,6 @@ char *getAllowedKey(char inputArray[maxSizeOfArray])
 
             j++;
         }
-        else
-        {
-            return 0;
-        }
         i = 0;
     }
     return letterArray;
@@ -135,7 +116,8 @@ void getFirstLetter()
 {
     int letter;
     int i = 0;
-    static char letterArray[maxSizeOfArray] = {0};
+    // int isIn = 0;
+    static char letterArray[1000] = {0};
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
