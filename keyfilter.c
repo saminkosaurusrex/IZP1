@@ -38,11 +38,22 @@ int main(int argc, char *argv[])
         }
         i = 0;
         allowed = getAllowedKey(array);
-        while (allowed[i] != '\0')
+
+        if (allowed[0] == '\0')
         {
-            printf("%c", allowed[i]);
-            i++;
+            printf("Not found");
+            return 1;
         }
+        else
+        {
+
+            while (allowed[i] != '\0')
+            {
+                printf("%c", allowed[i]);
+                i++;
+            }
+        }
+
         break;
     default:
         break;
@@ -107,6 +118,7 @@ char *getAllowedKey(char inputArray[1000])
 
             j++;
         }
+
         i = 0;
     }
     return letterArray;
