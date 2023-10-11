@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     int j = 0;
     char array[maxArraySize];
     char *allowed;
-    // int up = 'A' - 'a';
+    int up = 'A' - 'a';
     int down = 'a' - 'A';
 
     if (argc > 1)
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
             while (allowed[i] != '\0')
             {
-                printf("%c", allowed[i]);
+                printf("%c", allowed[i] + up);
                 i++;
             }
         }
