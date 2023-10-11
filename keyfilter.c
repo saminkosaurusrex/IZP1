@@ -1,24 +1,40 @@
+// treba osetrit: male velke pismena, a ked uz nieje zidna ina moznost nech to vypise mesto
+#define maxArraySize 1000
 #include <stdio.h>
 #include <ctype.h>
-char *getAllowedKey(char inputArray[1000]);
+#include <string.h>
+
+char *getAllowedKey(char inputArray[maxArraySize]);
 int isIn(char array[], char letter);
 void getFirstLetter();
-int isStrinInDatabase(char inputString[1000], char lineString[]);
+int isStrinInDatabase(char inputString[maxArraySize], char lineString[]);
 int main(int argc, char *argv[])
 {
     int i = 0;
     int j = 0;
-    char array[1000];
+    char array[maxArraySize];
     char *allowed;
+    // int up = 'A' - 'a';
+    int down = 'a' - 'A';
 
     if (argc > 1)
     {
         while (argv[1][i] != '\0')
         {
-            array[i] = argv[1][i];
+            if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+            {
+                array[i] = argv[1][i] + down;
+            }
+            else
+            {
+                array[i] = argv[1][i];
+            }
+
             i++;
         }
     }
+
+    // printf("%c", array[0]);
 
     switch (argc)
     {
@@ -61,7 +77,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-int isStrinInDatabase(char inputString[1000], char lineString[])
+int isStrinInDatabase(char inputString[maxArraySize], char lineString[])
 {
     int k = 0;
     int isIn = 0;
@@ -80,13 +96,14 @@ int isStrinInDatabase(char inputString[1000], char lineString[])
     return isIn;
 }
 
-char *getAllowedKey(char inputArray[1000])
+char *getAllowedKey(char inputArray[maxArraySize])
 {
     int i = 0;
     int j = 0;
+    // int p = 0;
     char letter;
-    char lineString[1000];
-    static char letterArray[1000] = {0};
+    char lineString[maxArraySize];
+    static char letterArray[maxArraySize] = {0};
 
     while ((letter = getchar()) != EOF)
     {
@@ -99,8 +116,19 @@ char *getAllowedKey(char inputArray[1000])
         i = 0;
         while (letter != '\n' && letter != EOF)
         {
-            lineString[i] = letter;
-            letter = getchar();
+            if (letter >= 'A' && letter <= 'Z')
+            {
+                lineString[i] = letter + 'a' - 'A';
+                letter = getchar();
+            }
+            else
+            {
+                lineString[i] = letter;
+                letter = getchar();
+            }
+
+            // lineString[i] = letter;
+
             i++;
         }
         i = 0;
@@ -128,8 +156,7 @@ void getFirstLetter()
 {
     int letter;
     int i = 0;
-    // int isIn = 0;
-    static char letterArray[1000] = {0};
+    static char letterArray[maxArraySize] = {0};
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
