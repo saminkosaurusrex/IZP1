@@ -1,5 +1,5 @@
 // treba osetrit: male velke pismena, a ked uz nieje zidna ina moznost nech to vypise mesto
-#define maxArraySize 1000
+#define maxArraySize 100
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
