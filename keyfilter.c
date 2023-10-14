@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
         {
             if (!isalpha(argv[1][j]))
             {
-                printf("Input can't be numerical");
+                printf("Wrong input!");
                 return 1;
             }
             j++;
@@ -155,9 +155,8 @@ char *getAllowedKey(char inputArray[maxArraySize])
             if (isIn(letterArray, lineString[i]) == 0)
             {
                 letterArray[j] = lineString[i];
+                j++;
             }
-
-            j++;
         }
 
         i = 0;
