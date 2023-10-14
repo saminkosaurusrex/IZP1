@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
     char *allowed;
     int up = 'A' - 'a';
     int down = 'a' - 'A';
+    char buffer;
 
     if (argc > 1)
     {
@@ -62,6 +63,18 @@ int main(int argc, char *argv[])
         }
         else
         {
+            for (int i = 0; allowed[i] != '\0'; i++)
+            {
+                for (int j = 0; allowed[j] != '\0'; j++)
+                {
+                    if (allowed[j] > allowed[j + 1] && allowed[j + 1] != '\0')
+                    {
+                        buffer = allowed[j];
+                        allowed[j] = allowed[j + 1];
+                        allowed[j + 1] = buffer;
+                    }
+                }
+            }
 
             while (allowed[i] != '\0')
             {
