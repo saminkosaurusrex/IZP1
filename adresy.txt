@@ -1,102 +1,95 @@
-Praha
+Prague
 Brno
-Bruntal
-Bratislava
 Ostrava
-Plzeň
+Plzen
 Liberec
 Olomouc
-Ústí nad Labem
-Hradec Králové
-České Budějovice
+Usti nad Labem
+Hradec Kralove
+Ceske Budejovice
 Pardubice
-Zlín
-Havířov
-Kladno
-Most
+Zlin
+Havirov
 Opava
-Frýdek-Místek
-Karviná
+Karvina
+Frydek-Mistek
+Decin
 Jihlava
-Teplice
-Děčín
+Most
+Prostejov
 Karlovy Vary
+Teplice
+Kla
 Chomutov
 Jablonec nad Nisou
-Mladá Boleslav
-Prostějov
-Třebíč
-Třinec
-Tábor
+Mlada Boleslav
+Ceska Lipa
+Trebic
+Trinec
+Tabor
 Znojmo
-Přerov
+Pribram
+Orlova
 Cheb
-Kroměříž
-Vsetín
-Valašské Meziříčí
-Litvínov
-Česká Lípa
-Orlová
+Frydek
 Trutnov
-Uherské Hradiště
-Hodonín
-Krnov
-Sokolov
-Šumperk
-Vítkovice
-Blansko
-Český Těšín
-Kutná Hora
-Náchod
-Jičín
-Nový Jičín
-Klatovy
-Havirov
+Pisek
 Kolin
-Mělník
-Litoměřice
-Česká Kamenice
-Benesov
-Vrchlabí
-Český Krumlov
-Jindřichův Hradec
-Benešov
-Chrudim
-Svitavy
-Pelhřimov
-Zábřeh
-Žďár nad Sázavou
-Tachov
-Rokycany
-Černošice
-Letovice
-Roudnice nad Labem
-Mělník
-Rakovník
-Vysoké Mýto
-Polička
-Tišnov
-Slaný
-Litomyšl
-Třemošná
-Jirkov
-Bílina
-Neratovice
-Postoloprty
+Kromeriz
+Sumperk
+Vsetin
+Valasske Mezirici
+Litvinov
+Kladno
+Kutna Hora
+Jindrichuv Hradec
+Nachod
+Melnik
 Louny
-Šluknov
-Varnsdorf
-Krupka
-Osek
-Litvínovice
+Zatec
+Bohumin
+Otrokovice
+Cesky Tesin
+Blansko
+Ceska Trebova
+Rakovnik
+Klatovy
+Hodonin
+Sokolov
+Litomerice
+Roznov pod Radhostem
+Jirkov
+Kadan
+Benesov
+Neratovice
+Rokycany
+Jesenik
+Dvur Kralove nad Labem
+Bilina
 Kralupy nad Vltavou
-Zákupy
-Ústí nad Orlicí
-Žatec
-Vlašim
-Horní Slavkov
-Lovosice
-Domažlice
-Žamberk
-Dobřichovice
-Chřibská
+Svitavy
+Koprivnice
+Klasterec nad Ohri
+Brandys nad Labem-Stara Boleslav
+Litomysl
+Uherske Hradiste
+Sumperk
+Kraluv Dvur
+Cesky Brod
+Beroun
+Kromeriz
+Varnsdorf
+Studenka
+Otrokovice
+Ostrov
+Zdar nad Sazavou
+Benesov
+Chrudim
+Mnisek pod Brdy
+Tisnov
+Havirov
+Rychnov nad Kneznou
+Kbakonoz
+Unicov
+Svitavy
+Srkl

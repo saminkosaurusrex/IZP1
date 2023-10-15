@@ -1,13 +1,14 @@
-// treba osetrit: male velke pismena, a ked uz nieje zidna ina moznost nech to vypise mesto
 #define maxArraySize 100
+#define stringsAreSame '1'
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-char *getAllowedKey(char inputArray[maxArraySize]);
+char *getAllowedKey(char inputArray[maxArraySize], int *rpt);
 int isIn(char array[], char letter);
 void getFirstLetter();
-int isStrinInDatabase(char inputString[maxArraySize], char lineString[]);
+int isStringInLine(char inputString[maxArraySize], char lineString[]);
+int isStringInDatabase(char inputString[maxArraySize]);
 int main(int argc, char *argv[])
 {
     int i = 0;
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     int up = 'A' - 'a';
     int down = 'a' - 'A';
     char buffer;
+    int rpt = 0;
 
     if (argc > 1)
     {
@@ -35,8 +37,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    // printf("%c", array[0]);
-
     switch (argc)
     {
     case 1:
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
             j++;
         }
         i = 0;
-        allowed = getAllowedKey(array);
+        allowed = getAllowedKey(array, &rpt);
 
         if (allowed[0] == '\0')
         {
@@ -63,6 +63,18 @@ int main(int argc, char *argv[])
         }
         else
         {
+            if (allowed[1] == '\0' && rpt == 0)
+            {
+                printf("Found: ");
+                for (int i = 0; i < argv[1][i]; i++)
+                {
+                    printf("%c", argv[1][i]);
+                }
+                printf("%c", allowed[0]);
+                return 0;
+            }
+
+            printf("Enable: ");
             for (int i = 0; allowed[i] != '\0'; i++)
             {
                 for (int j = 0; allowed[j] != '\0'; j++)
@@ -85,12 +97,14 @@ int main(int argc, char *argv[])
 
         break;
     default:
+        printf("Wrong input!");
+        return 1;
         break;
     }
     return 0;
 }
 
-int isStrinInDatabase(char inputString[maxArraySize], char lineString[])
+int isStringInLine(char inputString[maxArraySize], char lineString[])
 {
     int k = 0;
     int isIn = 0;
@@ -109,12 +123,13 @@ int isStrinInDatabase(char inputString[maxArraySize], char lineString[])
     return isIn;
 }
 
-char *getAllowedKey(char inputArray[maxArraySize])
+char *getAllowedKey(char inputArray[maxArraySize], int *rpt)
 {
     int i = 0;
     int j = 0;
-    // int p = 0;
     char letter;
+
+    *rpt = 0;
     char lineString[maxArraySize];
     static char letterArray[maxArraySize] = {0};
 
@@ -139,13 +154,11 @@ char *getAllowedKey(char inputArray[maxArraySize])
                 lineString[i] = letter;
                 letter = getchar();
             }
-
-            // lineString[i] = letter;
-
             i++;
         }
+
         i = 0;
-        if (isStrinInDatabase(inputArray, lineString) == 1)
+        if (isStringInLine(inputArray, lineString) == 1)
         {
             i = 0;
             while (lineString[i] == inputArray[i])
@@ -156,6 +169,10 @@ char *getAllowedKey(char inputArray[maxArraySize])
             {
                 letterArray[j] = lineString[i];
                 j++;
+            }
+            else
+            {
+                (*rpt)++;
             }
         }
 
