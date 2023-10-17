@@ -1,10 +1,10 @@
 #define maxArraySize 100
-#define stringsAreSame '1'
+#define up 'A' - 'a'
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-char *getAllowedKey(char inputArray[maxArraySize], int *rpt);
+char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase);
 int isIn(char array[], char letter);
 void getFirstLetter();
 int isStringInLine(char inputString[maxArraySize], char lineString[]);
@@ -15,18 +15,18 @@ int main(int argc, char *argv[])
     int j = 0;
     char array[maxArraySize];
     char *allowed;
-    int up = 'A' - 'a';
-    int down = 'a' - 'A';
     char buffer;
     int rpt = 0;
+    int inDatabase = 0;
 
     if (argc > 1)
     {
         while (argv[1][i] != '\0')
         {
-            if (argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+
+            if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
             {
-                array[i] = argv[1][i] + down;
+                array[i] = argv[1][i] + up;
             }
             else
             {
@@ -46,7 +46,8 @@ int main(int argc, char *argv[])
     case 2:
         while (argv[1][j] != '\0')
         {
-            if (!isalpha(argv[1][j]))
+
+            if (!isalpha(argv[1][j]) && argv[1][j] != ' ')
             {
                 printf("Wrong input!");
                 return 1;
@@ -54,23 +55,27 @@ int main(int argc, char *argv[])
             j++;
         }
         i = 0;
-        allowed = getAllowedKey(array, &rpt);
+        allowed = getAllowedKey(array, &rpt, &inDatabase);
 
-        if (allowed[0] == '\0')
+        if (allowed[0] == '\0' && rpt != 0 && inDatabase != 1)
         {
             printf("Not found");
             return 1;
         }
         else
         {
-            if (allowed[1] == '\0' && rpt == 0)
+            if (rpt == 0 && inDatabase == 1)
             {
                 printf("Found: ");
-                for (int i = 0; i < argv[1][i]; i++)
+                for (int i = 0; argv[1][i] != '\0'; i++)
                 {
-                    printf("%c", argv[1][i]);
+                    printf("%c", array[i]);
                 }
-                printf("%c", allowed[0]);
+                for (int i = 0; allowed[i] != '\0'; i++)
+                {
+                    printf("%c", allowed[i]);
+                }
+
                 return 0;
             }
 
@@ -90,7 +95,7 @@ int main(int argc, char *argv[])
 
             while (allowed[i] != '\0')
             {
-                printf("%c", allowed[i] + up);
+                printf("%c", allowed[i]);
                 i++;
             }
         }
@@ -123,15 +128,16 @@ int isStringInLine(char inputString[maxArraySize], char lineString[])
     return isIn;
 }
 
-char *getAllowedKey(char inputArray[maxArraySize], int *rpt)
+char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase)
 {
     int i = 0;
-    int j = 0;
+    *inDatabase = 0;
     char letter;
 
     *rpt = 0;
     char lineString[maxArraySize];
     static char letterArray[maxArraySize] = {0};
+    static char wordBufer[maxArraySize];
 
     while ((letter = getchar()) != EOF)
     {
@@ -144,9 +150,9 @@ char *getAllowedKey(char inputArray[maxArraySize], int *rpt)
         i = 0;
         while (letter != '\n' && letter != EOF)
         {
-            if (letter >= 'A' && letter <= 'Z')
+            if (letter >= 'a' && letter <= 'z')
             {
-                lineString[i] = letter + 'a' - 'A';
+                lineString[i] = letter + up;
                 letter = getchar();
             }
             else
@@ -167,8 +173,16 @@ char *getAllowedKey(char inputArray[maxArraySize], int *rpt)
             }
             if (isIn(letterArray, lineString[i]) == 0)
             {
-                letterArray[j] = lineString[i];
-                j++;
+                letterArray[*inDatabase] = lineString[i];
+                int k = 0;
+                while (lineString[i] != '\0')
+                {
+                    wordBufer[k] = lineString[i];
+                    k++;
+                    i++;
+                }
+
+                (*inDatabase)++;
             }
             else
             {
@@ -178,6 +192,12 @@ char *getAllowedKey(char inputArray[maxArraySize], int *rpt)
 
         i = 0;
     }
+
+    if (*rpt == 0 && *inDatabase == 1)
+    {
+        return wordBufer;
+    }
+
     return letterArray;
 }
 
