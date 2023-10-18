@@ -12,10 +12,11 @@ int main(int argc, char *argv[])
 {
     int i = 0;
     int j = 0;
+
     char array[MAXARRAYSIZE];
     char *allowed;
-
     char buffer;
+
     int rpt = 0;
     int inDatabase = 0;
 
@@ -23,7 +24,6 @@ int main(int argc, char *argv[])
     {
         while (argv[1][i] != '\0')
         {
-
             if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
             {
                 array[i] = argv[1][i] + UP;
@@ -41,13 +41,11 @@ int main(int argc, char *argv[])
     {
     case 1:
         printf("Enable: %s", getFirstLetter());
-
         break;
 
     case 2:
         while (argv[1][j] != '\0')
         {
-
             if (!isalpha(argv[1][j]) && argv[1][j] != ' ')
             {
                 printf("Wrong input!");
@@ -99,8 +97,8 @@ int main(int argc, char *argv[])
                 i++;
             }
         }
-
         break;
+
     default:
         printf("Wrong input!");
         return 1;
@@ -207,7 +205,6 @@ char *getFirstLetter()
     int i = 0;
     char buffer;
     static char letterArray[MAXARRAYSIZE] = {0};
-    // printf("Enable: ");
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
@@ -241,7 +238,6 @@ char *getFirstLetter()
             }
         }
     }
-    int j = 0;
     return letterArray;
 }
 
