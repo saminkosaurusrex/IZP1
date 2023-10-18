@@ -1,6 +1,3 @@
-// prerob to na pointre vsecko funkcie nex vracaju pole
-// mas to hotove v skuske len to cekni cu je to good
-// zmen konstanty na velke a dodrzuj konvencie a formatovanie
 #define MAXARRAYSIZE 101
 #define UP 'A' - 'a'
 #include <stdio.h>
@@ -44,6 +41,7 @@ int main(int argc, char *argv[])
     {
     case 1:
         printf("Enable: %s", getFirstLetter());
+
         break;
 
     case 2:
@@ -209,6 +207,7 @@ char *getFirstLetter()
     int i = 0;
     char buffer;
     static char letterArray[MAXARRAYSIZE] = {0};
+    // printf("Enable: ");
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
@@ -242,8 +241,10 @@ char *getFirstLetter()
             }
         }
     }
+    int j = 0;
     return letterArray;
 }
+
 int isIn(char array[], char letter)
 {
     int isIn = 0;
