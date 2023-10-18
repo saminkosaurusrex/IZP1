@@ -1,4 +1,4 @@
-#define maxArraySize 100
+#define maxArraySize 101
 #define up 'A' - 'a'
 #include <stdio.h>
 #include <ctype.h>
@@ -56,8 +56,8 @@ int main(int argc, char *argv[])
         }
         i = 0;
         allowed = getAllowedKey(array, &rpt, &inDatabase);
-
-        if (allowed[0] == '\0' && rpt != 0 && inDatabase != 1)
+        // printf("%c, %d, %d", allowed[0], rpt, inDatabase);
+        if (allowed[0] == '\0' && (rpt == 0 && inDatabase == 0))
         {
             printf("Not found");
             return 1;
