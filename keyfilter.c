@@ -1,19 +1,23 @@
-#define maxArraySize 101
-#define up 'A' - 'a'
+// prerob to na pointre vsecko funkcie nex vracaju pole
+// mas to hotove v skuske len to cekni cu je to good
+// zmen konstanty na velke a dodrzuj konvencie a formatovanie
+#define MAXARRAYSIZE 101
+#define UP 'A' - 'a'
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
-char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase);
+char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase);
 int isIn(char array[], char letter);
-void getFirstLetter();
-int isStringInLine(char inputString[maxArraySize], char lineString[]);
+char *getFirstLetter();
+int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[]);
 int main(int argc, char *argv[])
 {
     int i = 0;
     int j = 0;
-    char array[maxArraySize];
+    char array[MAXARRAYSIZE];
     char *allowed;
+
     char buffer;
     int rpt = 0;
     int inDatabase = 0;
@@ -25,7 +29,7 @@ int main(int argc, char *argv[])
 
             if (argv[1][i] >= 'a' && argv[1][i] <= 'z')
             {
-                array[i] = argv[1][i] + up;
+                array[i] = argv[1][i] + UP;
             }
             else
             {
@@ -39,7 +43,7 @@ int main(int argc, char *argv[])
     switch (argc)
     {
     case 1:
-        getFirstLetter();
+        printf("Enable: %s", getFirstLetter());
         break;
 
     case 2:
@@ -107,7 +111,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-int isStringInLine(char inputString[maxArraySize], char lineString[])
+int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[])
 {
     int k = 0;
     int isIn = 0;
@@ -126,16 +130,16 @@ int isStringInLine(char inputString[maxArraySize], char lineString[])
     return isIn;
 }
 
-char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase)
+char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase)
 {
     int i = 0;
     *inDatabase = 0;
     char letter;
 
     *rpt = 0;
-    char lineString[maxArraySize];
-    static char letterArray[maxArraySize] = {0};
-    static char wordBufer[maxArraySize];
+    char lineString[MAXARRAYSIZE];
+    static char letterArray[MAXARRAYSIZE] = {0};
+    static char wordBufer[MAXARRAYSIZE];
 
     while ((letter = getchar()) != EOF)
     {
@@ -150,7 +154,7 @@ char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase)
         {
             if (letter >= 'a' && letter <= 'z')
             {
-                lineString[i] = letter + up;
+                lineString[i] = letter + UP;
                 letter = getchar();
             }
             else
@@ -199,13 +203,12 @@ char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase)
     return letterArray;
 }
 
-void getFirstLetter()
+char *getFirstLetter()
 {
     int letter;
     int i = 0;
     char buffer;
-    static char letterArray[maxArraySize] = {0};
-    printf("Enable: ");
+    static char letterArray[MAXARRAYSIZE] = {0};
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
@@ -239,14 +242,8 @@ void getFirstLetter()
             }
         }
     }
-    int j = 0;
-    while (letterArray[j] != '\0')
-    {
-        printf("%c", letterArray[j]);
-        j++;
-    }
+    return letterArray;
 }
-
 int isIn(char array[], char letter)
 {
     int isIn = 0;
