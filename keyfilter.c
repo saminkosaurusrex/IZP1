@@ -8,7 +8,6 @@ char *getAllowedKey(char inputArray[maxArraySize], int *rpt, int *inDatabase);
 int isIn(char array[], char letter);
 void getFirstLetter();
 int isStringInLine(char inputString[maxArraySize], char lineString[]);
-int isStringInDatabase(char inputString[maxArraySize]);
 int main(int argc, char *argv[])
 {
     int i = 0;
@@ -56,7 +55,6 @@ int main(int argc, char *argv[])
         }
         i = 0;
         allowed = getAllowedKey(array, &rpt, &inDatabase);
-        // printf("%c, %d, %d", allowed[0], rpt, inDatabase);
         if (allowed[0] == '\0' && (rpt == 0 && inDatabase == 0))
         {
             printf("Not found");
@@ -205,7 +203,9 @@ void getFirstLetter()
 {
     int letter;
     int i = 0;
+    char buffer;
     static char letterArray[maxArraySize] = {0};
+    printf("Enable: ");
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
@@ -213,7 +213,6 @@ void getFirstLetter()
             if (i == 0)
             {
                 letterArray[i] = letter;
-                printf("%c\n", letterArray[i]);
                 i++;
             }
             else
@@ -222,11 +221,29 @@ void getFirstLetter()
                 if (isIn(letterArray, pismenko) != 1)
                 {
                     letterArray[i] = pismenko;
-                    printf("%c\n", letterArray[i]);
                     i++;
                 }
             }
         }
+    }
+
+    for (int i = 0; letterArray[i] != '\0'; i++)
+    {
+        for (int j = 0; letterArray[j] != '\0'; j++)
+        {
+            if (letterArray[j] > letterArray[j + 1] && letterArray[j + 1] != '\0')
+            {
+                buffer = letterArray[j];
+                letterArray[j] = letterArray[j + 1];
+                letterArray[j + 1] = buffer;
+            }
+        }
+    }
+    int j = 0;
+    while (letterArray[j] != '\0')
+    {
+        printf("%c", letterArray[j]);
+        j++;
     }
 }
 
