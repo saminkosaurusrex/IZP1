@@ -7,6 +7,7 @@ xkundrs00
 // CONSTANTS for max size of array and for conversion between lower and upper case
 #define MAXARRAYSIZE 101
 #define UP 'A' - 'a'
+// needed libraries
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -16,16 +17,15 @@ char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase);
 int isIn(char array[], char letter);
 char *getFirstLetter();
 int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[]);
+void alphaSort(char *array);
 
 int main(int argc, char *argv[])
 {
     int i = 0;
     int j = 0;
-    int k = 0;
 
     char *allowed;
     char array[MAXARRAYSIZE];
-    char buffer;
 
     int rpt = 0;
     int inDatabase = 0;
@@ -78,42 +78,18 @@ int main(int argc, char *argv[])
             // checks if input matches only one address in database
             if (rpt == 0 && inDatabase == 1)
             {
-                printf("Found: ");
-                for (i = 0; argv[1][i] != '\0'; i++)
-                {
-                    printf("%c", array[i]);
-                }
-                for (i = 0; allowed[i] != '\0'; i++)
-                {
-                    printf("%c", allowed[i]);
-                }
-
+                printf("Found: %s%s", array, allowed);
                 return 0;
             }
-
-            printf("Enable: ");
-            // alpha sort for enabled keys
-            for (i = 0; allowed[i] != '\0'; i++)
+            else
             {
-                for (j = 0; allowed[j] != '\0'; j++)
-                {
-                    if (allowed[j] > allowed[j + 1] && allowed[j + 1] != '\0')
-                    {
-                        buffer = allowed[j];
-                        allowed[j] = allowed[j + 1];
-                        allowed[j + 1] = buffer;
-                    }
-                }
-            }
-            // print for enabled keys
-            while (allowed[k] != '\0')
-            {
-                printf("%c", allowed[k]);
-                k++;
+                alphaSort(allowed);
+                printf("Enable: %s", allowed);
+                return 0;
             }
         }
         break;
-        // if number of arguments  does not match any case
+    // if number of arguments  does not match any case
     default:
         printf("Wrong input!");
         return 1;
@@ -122,7 +98,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// function that checks that strings matches
+// function that checks wheter strings matches or not
 int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[])
 {
     int k = 0;
@@ -141,7 +117,6 @@ int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[])
     }
     return isIn;
 }
-
 // function that returns every possible key after string match or only matching string in database
 char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase)
 {
@@ -215,13 +190,12 @@ char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase)
 
     return letterArray;
 }
-
 // function that returns first letter of every word in database
 char *getFirstLetter()
 {
     int letter;
     int i = 0;
-    char buffer;
+
     static char letterArray[MAXARRAYSIZE] = {0};
 
     while ((letter = getchar()) != EOF)
@@ -245,23 +219,12 @@ char *getFirstLetter()
         }
     }
 
-    for (int i = 0; letterArray[i] != '\0'; i++)
-    {
-        for (int j = 0; letterArray[j] != '\0'; j++)
-        {
-            if (letterArray[j] > letterArray[j + 1] && letterArray[j + 1] != '\0')
-            {
-                buffer = letterArray[j];
-                letterArray[j] = letterArray[j + 1];
-                letterArray[j + 1] = buffer;
-            }
-        }
-    }
+    alphaSort(letterArray);
     return letterArray;
 }
-
 // function that returns wheter letter is already in array or not
 int isIn(char array[], char letter)
+
 {
     int isIn = 0;
     int i = 0;
@@ -280,4 +243,22 @@ int isIn(char array[], char letter)
         i++;
     }
     return isIn;
+}
+// sorts array in alphabetical order
+void alphaSort(char *array)
+{
+    char buffer;
+    int i, j;
+    for (i = 0; array[i] != '\0'; i++)
+    {
+        for (j = 0; array[j] != '\0'; j++)
+        {
+            if (array[j] > array[j + 1] && array[j + 1] != '\0')
+            {
+                buffer = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = buffer;
+            }
+        }
+    }
 }
