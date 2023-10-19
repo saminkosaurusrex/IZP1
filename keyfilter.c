@@ -1,25 +1,36 @@
+/*
+Samuel Kundrát
+xkundrs00
+260012
+*/
+
+// CONSTANTS for max size of array and for conversion between lower and upper case
 #define MAXARRAYSIZE 101
 #define UP 'A' - 'a'
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
 
+// declarations of needed functions
 char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase);
 int isIn(char array[], char letter);
 char *getFirstLetter();
 int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[]);
+
 int main(int argc, char *argv[])
 {
     int i = 0;
     int j = 0;
+    int k = 0;
 
-    char array[MAXARRAYSIZE];
     char *allowed;
+    char array[MAXARRAYSIZE];
     char buffer;
 
     int rpt = 0;
     int inDatabase = 0;
 
+    // conversion of input array of chars into upper case
     if (argc > 1)
     {
         while (argv[1][i] != '\0')
@@ -32,11 +43,11 @@ int main(int argc, char *argv[])
             {
                 array[i] = argv[1][i];
             }
-
             i++;
         }
     }
 
+    // switch for number of arguments variations
     switch (argc)
     {
     case 1:
@@ -44,6 +55,7 @@ int main(int argc, char *argv[])
         break;
 
     case 2:
+        // checker for only alphabetical input
         while (argv[1][j] != '\0')
         {
             if (!isalpha(argv[1][j]) && argv[1][j] != ' ')
@@ -53,8 +65,9 @@ int main(int argc, char *argv[])
             }
             j++;
         }
-        i = 0;
+
         allowed = getAllowedKey(array, &rpt, &inDatabase);
+        // checkes if input is even in database
         if (allowed[0] == '\0' && (rpt == 0 && inDatabase == 0))
         {
             printf("Not found");
@@ -62,14 +75,15 @@ int main(int argc, char *argv[])
         }
         else
         {
+            // checks if input matches only one address in database
             if (rpt == 0 && inDatabase == 1)
             {
                 printf("Found: ");
-                for (int i = 0; argv[1][i] != '\0'; i++)
+                for (i = 0; argv[1][i] != '\0'; i++)
                 {
                     printf("%c", array[i]);
                 }
-                for (int i = 0; allowed[i] != '\0'; i++)
+                for (i = 0; allowed[i] != '\0'; i++)
                 {
                     printf("%c", allowed[i]);
                 }
@@ -78,9 +92,10 @@ int main(int argc, char *argv[])
             }
 
             printf("Enable: ");
-            for (int i = 0; allowed[i] != '\0'; i++)
+            // alpha sort for enabled keys
+            for (i = 0; allowed[i] != '\0'; i++)
             {
-                for (int j = 0; allowed[j] != '\0'; j++)
+                for (j = 0; allowed[j] != '\0'; j++)
                 {
                     if (allowed[j] > allowed[j + 1] && allowed[j + 1] != '\0')
                     {
@@ -90,15 +105,15 @@ int main(int argc, char *argv[])
                     }
                 }
             }
-
-            while (allowed[i] != '\0')
+            // print for enabled keys
+            while (allowed[k] != '\0')
             {
-                printf("%c", allowed[i]);
-                i++;
+                printf("%c", allowed[k]);
+                k++;
             }
         }
         break;
-
+        // if number of arguments  does not match any case
     default:
         printf("Wrong input!");
         return 1;
@@ -107,6 +122,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+// function that checks that strings matches
 int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[])
 {
     int k = 0;
@@ -126,13 +142,15 @@ int isStringInLine(char inputString[MAXARRAYSIZE], char lineString[])
     return isIn;
 }
 
+// function that returns every possible key after string match or only matching string in database
 char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase)
 {
     int i = 0;
-    *inDatabase = 0;
     char letter;
 
+    *inDatabase = 0;
     *rpt = 0;
+
     char lineString[MAXARRAYSIZE];
     static char letterArray[MAXARRAYSIZE] = {0};
     static char wordBufer[MAXARRAYSIZE];
@@ -187,7 +205,6 @@ char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase)
                 (*rpt)++;
             }
         }
-
         i = 0;
     }
 
@@ -199,12 +216,14 @@ char *getAllowedKey(char inputArray[MAXARRAYSIZE], int *rpt, int *inDatabase)
     return letterArray;
 }
 
+// function that returns first letter of every word in database
 char *getFirstLetter()
 {
     int letter;
     int i = 0;
     char buffer;
     static char letterArray[MAXARRAYSIZE] = {0};
+
     while ((letter = getchar()) != EOF)
     {
         if (letter == '\n' || i == 0)
@@ -241,6 +260,7 @@ char *getFirstLetter()
     return letterArray;
 }
 
+// function that returns wheter letter is already in array or not
 int isIn(char array[], char letter)
 {
     int isIn = 0;
