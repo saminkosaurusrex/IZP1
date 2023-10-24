@@ -30,6 +30,9 @@ int main(int argc, char *argv[])
     int rpt = 0;
     int inDatabase = 0;
 
+    //  printf("znak:%c. %d.%c.", argv[1][0], argc, array[0]);
+    // return 1;
+
     // conversion of input array of chars into upper case
     if (argc > 1)
     {
@@ -44,6 +47,11 @@ int main(int argc, char *argv[])
                 array[i] = argv[1][i];
             }
             i++;
+            if (i >= 100)
+            {
+                // /printf("kokot");
+                return 1;
+            }
         }
     }
 
@@ -56,9 +64,16 @@ int main(int argc, char *argv[])
 
     case 2:
         // checker for only alphabetical input
+
+        if (array[0] == '\0')
+        {
+            printf("Enable: %s", getFirstLetter());
+            return 0;
+        }
+
         while (argv[1][j] != '\0')
         {
-            if (!isalpha(argv[1][j]) && argv[1][j] != ' ')
+            if ((!isalpha(argv[1][j]) && argv[1][j] != ' ') && argv[1][j] != '.')
             {
                 printf("Wrong input!");
                 return 1;
