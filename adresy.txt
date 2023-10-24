@@ -1,95 +1,11 @@
-Prague
-Brno
-Ostrava
-Plzen
-Liberec
-Olomouc
-Usti nad Labem
-Hradec Kralove
-Ceske Budejovice
-Pardubice
-Zlin
-Havirov
-Opava
-Karvina
-Frydek-Mistek
-Decin
-Jihlava
-Most
-Prostejov
-Karlovy Vary
-Teplice
-Kla
-Chomutov
-Jablonec nad Nisou
-Mlada Boleslav
-Ceska Lipa
-Trebic
-Trinec
-Tabor
-Znojmo
-Pribram
-Orlova
-Cheb
-Frydek
-Trutnov
-Pisek
-Kolin
-Kromeriz
-Sumperk
-Vsetin
-Valasske Mezirici
-Litvinov
-Kladno
-Kutna Hora
-Jindrichuv Hradec
-Nachod
-Melnik
-Louny
-Zatec
-Bohumin
-Otrokovice
-Cesky Tesin
-Blansko
-Ceska Trebova
-Rakovnik
-Klatovy
-Hodonin
-Sokolov
-Litomerice
-Roznov pod Radhostem
-Jirkov
-Kadan
-Benesov
-Neratovice
-Rokycany
-Jesenik
-Dvur Kralove nad Labem
-Bilina
-Kralupy nad Vltavou
-Svitavy
-Koprivnice
-Klasterec nad Ohri
-Brandys nad Labem-Stara Boleslav
-Litomysl
-Uherske Hradiste
-Sumperk
-Kraluv Dvur
-Cesky Brod
-Beroun
-Kromeriz
-Varnsdorf
-Studenka
-Otrokovice
-Ostrov
-Zdar nad Sazavou
-Benesov
-Chrudim
-Mnisek pod Brdy
-Tisnov
-Havirov
-Rychnov nad Kneznou
-Kbakonoz
-Unicov
-Svitavy
-Srkl
+!
+1
+2
+3
+:
+;
+A
+B
+_
+~
+C
