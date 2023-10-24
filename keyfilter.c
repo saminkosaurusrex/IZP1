@@ -227,8 +227,18 @@ char *getFirstLetter()
                 char pismenko = getchar();
                 if ((isIn(letterArray, pismenko) != 1) && pismenko != EOF)
                 {
-                    letterArray[i] = pismenko;
-                    i++;
+                    if (pismenko >= 'a' && pismenko <= 'z')
+                    {
+
+                        letterArray[i] = pismenko + UP;
+                        i++;
+                    }
+                    else
+                    {
+
+                        letterArray[i] = pismenko;
+                        i++;
+                    }
                 }
             }
         }

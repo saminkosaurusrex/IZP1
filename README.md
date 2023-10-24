@@ -9,6 +9,8 @@
 - it depends on OS you are using
 - but it should by GOOD with database
 
+- fixed
+
 ### CREDITS
 
 - TESTER: https://gist.github.com/sleaper/801a07f5bd56b9728a8d634057ee5c45
