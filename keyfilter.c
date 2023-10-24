@@ -215,7 +215,7 @@ char *getFirstLetter()
 
     while ((letter = getchar()) != EOF)
     {
-        if (letter == '\n' || i == 0)
+        if ((letter == '\n' || i == 0))
         {
             if (i == 0)
             {
@@ -225,7 +225,7 @@ char *getFirstLetter()
             else
             {
                 char pismenko = getchar();
-                if (isIn(letterArray, pismenko) != 1)
+                if ((isIn(letterArray, pismenko) != 1) && pismenko != EOF)
                 {
                     letterArray[i] = pismenko;
                     i++;
